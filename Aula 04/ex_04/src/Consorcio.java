@@ -87,7 +87,8 @@ public class Consorcio {
     }
     
     public void mostrarValores(){
-        JOptionPane.showMessageDialog(null, "O valor total pago até o momento é: " + getTotalPago()
+        JOptionPane.showMessageDialog(null, "O valor total pago até o 
+        momento é: " + getTotalPago()
         + ".\nO saldo devedor é de: " + getSaldoDevedor());
     }
     
