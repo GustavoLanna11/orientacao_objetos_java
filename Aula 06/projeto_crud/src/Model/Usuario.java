@@ -97,7 +97,9 @@ public class Usuario {
         con.executeSQL(sql);
         JOptionPane.showMessageDialog(null, "Registro excluido com sucesso...");
     }
+      
     public void alterar(){
+        //adicionar campo de login e senha
         String sql;
         sql="Update usuario set nome='"+ getNome()+"',telefone='"+getTelefone()+"' where codigo="+ getCodigo();
         con.executeSQL(sql);
@@ -105,5 +107,30 @@ public class Usuario {
         
     }
     
+ public ResultSet consultarCampoEspecifico(){
+        ResultSet tabela;
+        tabela = null;
     
+        try{
+          String sql="Select * from usuario where nome like '"+ getNome()+"%'";
+          tabela= con.RetornarResultset(sql);                  
+       
+           }
+           catch(Exception sqle){
+                JOptionPane.showMessageDialog(null,"Atenção..."+sqle.getMessage());
+           }
+        return tabela;    
+    }
+    
+ //método para login
+  public ResultSet logar()
+    {
+        ResultSet tabela;
+        tabela = null;
+        
+         String sql = "select * from usuario where login= '" + getLogin() + "' and senha= '" + getSenha() + "' " ;
+          tabela= con.RetornarResultset(sql);  
+          return tabela;
+    }   
+
 }
